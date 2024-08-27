@@ -1,0 +1,54 @@
+/* Home Section ----------------------- */
+.video-container {
+    position: relative;
+    z-index: -1;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+
+    video {
+        @extend %full-screen-fixed;
+        object-fit: cover;
+    }
+}
+
+.overlay {
+    @extend %full-screen-fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center;
+
+    h1 {
+        position: relative;
+        color: $primary-font-color;
+        font-size: clamp(3.5rem, 5vw, 6rem);
+        font-weight: 800;
+        z-index: 10;
+        animation: colorChange 1.5s ease-in-out infinite alternate;
+
+        @keyframes colorChange {
+            from {
+                color: darken($primary-font-color, 20%);
+            }
+            to {
+                color: white;
+            }
+        }
+
+        @include tablet-vertical {
+            font-size: 4rem;
+        }
+
+        @include smartphone-vertical {
+            font-size: 3.5rem;
+        }
+    }
+
+    p {
+        color: white;
+        position: relative;
+        text-align: center;
+        font-size: clamp(1rem, 5vw, 1.5rem);
+        font-weight: 200;
+    }
+} 

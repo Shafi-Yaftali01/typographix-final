@@ -1,0 +1,102 @@
+/* Gallery Section -------------------- */
+#gallery {
+    @extend %section;
+
+    .gallery-container {
+        @include flex-center;
+        height: 100vh;
+        position: relative;
+        top: 50px;
+
+        @include tablet-horizontal-large {
+            margin: 0 2.5%;
+        }
+
+        @include tablet-vertical {
+            @include mobile-gallery-container(10vh);
+        }
+
+        @include smartphone-small {
+            padding-bottom: 20vh;
+        }
+
+        @include smartphone-horizontal {
+            margin: 0 2.5%;
+            @include mobile-gallery-container(30vh);
+        }
+    }
+
+    .image-box {
+        width: 300px;
+        opacity: 0.5;
+        transform: scale(0.95);
+        margin-right: 10px;
+
+        &:not(.tall) {
+            height: 400px;
+        }
+
+        &.tall {
+            height: 600px;
+            animation: levitation 4s ease-in-out infinite;
+
+            @include tablet-vertical {
+                animation: none;
+            }
+
+            @include smartphone-horizontal {
+                animation: none;
+            }
+        }
+
+        @keyframes levitation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+                transition-delay: $i * 0.1s;
+            }
+        }
+
+        &.active {
+            opacity: 1;
+            transform: scale(1);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+    }
+
+    .text-box {
+        background: $background-alt;
+        box-sizing: border-box;
+        padding: 20px;
+        width: 300px;
+
+        h3 {
+            color: $secondary-font-color;
+        }
+    }
+
+    .image-box, .text-box {
+        border-radius: 10px;
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        @include tablet-vertical {
+            @include mobile-gallery-box(95%);
+        }
+
+        @include smartphone-horizontal {
+            @include mobile-gallery-box(90%);
+        }
+    }
+}

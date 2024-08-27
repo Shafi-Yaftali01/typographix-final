@@ -1,0 +1,120 @@
+/* Blog Section ----------------------- */
+#blog {
+  @extend %section;
+  @include flex-center;
+  padding-top: 10vh;
+
+  .blog-container {
+    width: 80%;
+    padding: 50px;
+
+    @include tablet-horizontal-large {
+      width: 90%;
+      padding: 5%;
+    }
+  
+    a {
+      text-decoration: none;
+      color: $primary-color;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: darken($primary-color, 20%);
+      }
+    }
+
+    .featured-article {
+      margin-bottom: 50px;
+      opacity: 0;
+    
+      h3 {
+        @include blog-title(2.5rem);
+    
+        @include tablet-vertical {
+          font-size: 2.2rem;
+        }
+    
+        @include smartphone-vertical {
+          font-size: 1.5rem;
+        }
+
+        @include smartphone-horizontal {
+          font-size: 2rem;
+        }
+      }
+    
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    
+        @include smartphone-vertical {
+          font-size: 1rem;
+        }
+      }
+    
+      img {
+        @extend %article-img;
+      }
+    }
+
+    .smaller-articles {
+      display: flex;
+      justify-content: space-between;
+    
+      @include tablet-vertical {
+        flex-direction: column;
+      }
+
+      @include smartphone-horizontal {
+        flex-direction: column;
+      }
+    
+      .article {
+        @extend %article;
+        opacity: 0;
+
+        @include tablet-vertical {
+          margin-bottom: 20px;
+        }
+
+        @include smartphone-vertical {
+          margin: 0;
+          margin-bottom: 20px;
+        }
+
+        @include smartphone-horizontal {
+          margin-bottom: 20px;
+        }
+      
+        h3 {
+          @include blog-title(1.8rem);
+      
+          @include tablet-horizontal {
+            font-size: 1.4rem;
+          }
+      
+          @include tablet-vertical {
+            font-size: 1.7rem;
+          }
+      
+          @include smartphone-vertical {
+            font-size: 1.3rem;
+          }
+        }
+      
+        p {
+          font-size: 1rem;
+      
+          @include tablet-horizontal {
+            font-size: 0.9rem;
+          }
+        }
+      
+        img {
+          @extend %article-img;
+          min-height: 300px;
+        }
+      }
+    }
+  }
+}

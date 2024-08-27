@@ -1,0 +1,114 @@
+/* Contact Section -------------------- */
+#contact {
+    @extend %section;
+    display: grid;
+    place-items: center;
+
+    .contact-container {
+        opacity: 0;
+
+        @include smartphone-vertical {
+            padding-top: 5vh;
+        }
+
+        @include smartphone-small {
+            padding-top: 10vh;
+        }
+
+        @include smartphone-horizontal {
+            padding-top: 15vh;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+    
+        .form-container {
+            background-color: $background-alt;
+            padding: 20px;
+            width: 80vw;
+            margin: 0 auto;
+            border-radius: 20px;
+            font-size: 1rem;
+    
+            form {
+                .grid-container {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 20px;
+    
+                    @include smartphone-vertical {
+                        grid-template-columns: 1fr;
+                        gap: 10px;
+                    }
+    
+                    .form-group {
+                        display: flex;
+                        flex-direction: column;
+    
+                        label {
+                            color: white;
+                            margin-bottom: 5px;
+                        }
+    
+                        input {
+                            @extend %contact-input;
+                            &:focus {
+                                outline: none;
+                                background-color: darken($input-bg, 10%);
+                            }
+                        }
+                    }
+                }
+    
+                .message {
+                    label {
+                        position: relative;
+                        top: 15px;
+                        color: white;
+                    }
+    
+                    textarea {
+                        @extend %contact-input;
+                        box-sizing: border-box;
+                        width: 100%;
+                        margin: 20px 20px 0 0;
+                        height: 200px;
+                        resize: vertical;
+        
+                        @include smartphone-horizontal {
+                            height: 100px;
+                        }
+
+                        @include smartphone-small {
+                            height: 100px;
+                        }
+        
+                        &:focus {
+                            outline: none;
+                            background-color: darken($input-bg, 10%);
+                        }
+                    }
+                }
+    
+                button {
+                    width: 100%;
+                    padding: 15px;
+                    background-color: lighten($input-bg, 30%);
+                    border-radius: 25px;
+                    color: $background;
+                    font-size: 1.2rem;
+                    border: none;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                    margin-top: 20px;
+    
+                    &:hover {
+                        background-color: darken($input-bg, 10%);
+                        color: $secondary-font-color;
+                    }
+                }
+            }
+        }
+    }
+}
